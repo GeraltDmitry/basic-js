@@ -1,6 +1,5 @@
 const CustomError = require("../extensions/custom-error");
 
-module.exports = VigenereCipheringMachine;
 class VigenereCipheringMachine {
   constructor(typeOfMachine) {
     this.typeOfMachine = typeOfMachine;
