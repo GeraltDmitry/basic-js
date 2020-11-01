@@ -1,13 +1,13 @@
 
 module.exports = class DepthCalculator {
-    calculateDepth(arr) {
+    depthCalculate(arr) {
       let depthCount = 1;  
       arr.forEach(elem => {
         if (Array.isArray(elem)) {
-          const nestedDepth = this.calculateDepth(elem);
+          const depthNested = this.depthCalculate(elem);
   
-          if (depthCount < 1 + nestedDepth) {
-            depthCount = 1 + nestedDepth;
+          if (depthCount < 1 + depthNested) {
+            depthCount = 1 + depthNested;
           }
         }
       });  
