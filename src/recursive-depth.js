@@ -1,16 +1,17 @@
+const CustomError = require("../extensions/custom-error");
 
 module.exports = class DepthCalculator {
-    depthCalculate(arr) {
-      let depthCount = 1;  
-      arr.forEach(elem => {
-        if (Array.isArray(elem)) {
-          const depthNested = this.depthCalculate(elem);
-  
-          if (depthCount < 1 + depthNested) {
-            depthCount = 1 + depthNested;
-          }
-        }
-      });  
-      return depthCount;
-    }
-  };
+  calculateDepth(arr, depth = 1) {
+    let maxDepth = depth;
+    arr.forEach((current) => {
+      if (Array.isArray(current)) {
+        depth++;
+        let temp = this.calculateDepth(current, depth);
+        maxDepth = temp > maxDepth ? temp : maxDepth;
+        depth--;
+      }
+    })
+
+    return maxDepth;
+  }
+};
